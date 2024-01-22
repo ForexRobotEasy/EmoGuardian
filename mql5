@@ -1,0 +1,98 @@
+
+//+------------------------------------------------------------------+
+//|                                        EmoGuardian.mq5          |
+//|                             Copyright © 2021 forexroboteasy.com  |
+//|                                       Forex Robot Easy Team      |
+//+------------------------------------------------------------------+
+
+// EmoGuardian - A cutting-edge Forex software to manage emotions and avoid impulsive trading
+
+// Compatibility: Compatible with most Hedging accounts
+// Incompatibility: Not compatible with Netting Accounts
+// Strategy Tester: EmoGuardian does not function on the strategy tester
+
+// User Manual: Refer to the comprehensive and detailed manual for EmoGuardian functionalities
+
+// Daily Limits:
+// 1. Minimum and Maximum Equity Levels: Allow traders to set minimum and maximum equity levels in the account currency
+// 2. Maximum Loss or Gain: Enable traders to define a maximum loss or gain per day in currency or percentage
+// 3. Customizable Start Time: Provide the option to customize the day's start time
+
+//+------------------------------------------------------------------+
+//| Expert initialization function                                   |
+//+------------------------------------------------------------------+
+int OnInit()
+{
+    // Check compatibility with Hedging accounts
+    if(!AccountInfoInteger(ACCOUNT_MARGIN_MODE))
+    {
+        Print('EmoGuardian is not compatible with Netting Accounts. Please use a Hedging account.');
+        return INIT_FAILED;
+    }
+    
+    // Check if running in the strategy tester
+    if(IsTesting())
+    {
+        Print('EmoGuardian does not function on the strategy tester. Please test it on a live account.');
+        return INIT_FAILED;
+    }
+    
+    // Load user-defined settings
+    LoadSettings();
+    
+    // Initialize other necessary variables and indicators
+    
+    return INIT_SUCCEEDED;
+}
+
+//+------------------------------------------------------------------+
+//| Expert deinitialization function                                 |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason)
+{
+    // Perform necessary cleanup and tasks before the Expert Advisor is removed
+}
+
+//+------------------------------------------------------------------+
+//| Expert tick function                                             |
+//+------------------------------------------------------------------+
+void OnTick()
+{
+    // Check if the current time is the user-defined start time
+    if(TimeCurrent() == StartTime)
+    {
+        // Perform necessary actions for the start of the trading day
+        
+        // Check equity levels and adjust if necessary
+        
+        // Check daily loss and gain limits and adjust if necessary
+        
+        // Place trades or perform other trading actions
+        
+        // Display appropriate messages or notifications to the trader
+    }
+}
+
+//+------------------------------------------------------------------+
+//| Load user-defined settings from inputs or external files          |
+//+------------------------------------------------------------------+
+void LoadSettings()
+{
+    // Load minimum and maximum equity levels from user inputs
+    
+    // Load maximum loss or gain per day from user inputs
+    
+    // Load customizable start time from user inputs
+}
+
+//+------------------------------------------------------------------+
+//| Save user-defined settings to inputs or external files            |
+//+------------------------------------------------------------------+
+void SaveSettings()
+{
+    // Save minimum and maximum equity levels to user inputs
+    
+    // Save maximum loss or gain per day to user inputs
+    
+    // Save customizable start time to user inputs
+}
